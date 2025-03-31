@@ -179,7 +179,8 @@
 
       .popup {
         position: absolute;
-        background-color: white;
+        background-color: #ffeb3b; /* Yellow background */
+        color: #000000; /* Black text */
         padding: 5px 10px;
         border-radius: 5px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
@@ -188,6 +189,7 @@
         font-weight: bold;
         transition: opacity 0.3s ease, transform 0.3s ease;
         z-index: 10;
+        border: 1px solid #ffd700; /* Golden border */
       }
 
       .popup.show {
@@ -210,29 +212,51 @@
           margin: 20px 0;
         }
         .pin-container {
-        position: absolute;
-        width: 30px; /* Increased from 24px */
-        height: 15px; /* Increased from 24px */
-        transform: translate(-50%, -50%);
-        cursor: pointer;
-        transition: transform 0.3s ease;
-        color: red; /* Default color, will be overridden by JS */
-        transform-origin: center bottom; /* Better scaling origin */
+          position: absolute;
+          width: 30px; /* Increased from 24px */
+          height: 15px; /* Increased from 24px */
+          transform: translate(-50%, -50%);
+          cursor: pointer;
+          transition: transform 0.3s ease;
+          color: red; /* Default color, will be overridden by JS */
+          transform-origin: center bottom; /* Better scaling origin */
+        }
+
+        .pin-container svg {
+          width: 100%;
+          height: 100%;
+          transform: scale(1.6); /* Make the pin thicker */
+        }
+
+        .pin-container:hover,
+        .pin-container.active {
+          transform: translate(-50%, -50%) scale(1.8); /* Increased scale */
+          animation: bounce 0.5s ease infinite alternate;
+        }
       }
+      @media (max-width: 450px) {
+        .pin-container {
+          position: absolute;
+          width: 30px; /* Increased from 24px */
+          height: 15px; /* Increased from 24px */
+          transform: translate(-50%, -50%);
+          cursor: pointer;
+          transition: transform 0.3s ease;
+          color: red; /* Default color, will be overridden by JS */
+          transform-origin: center bottom; /* Better scaling origin */
+        }
 
-      .pin-container svg {
-        width: 100%;
-        height: 100%;
-        transform: scale(1.2); /* Make the pin thicker */
-      }
+        .pin-container svg {
+          width: 100%;
+          height: 100%;
+          transform: scale(1.2); /* Make the pin thicker */
+        }
 
-      .pin-container:hover,
-      .pin-container.active {
-        transform: translate(-50%, -50%) scale(1.8); /* Increased scale */
-        animation: bounce 0.5s ease infinite alternate;
-      }
-
-
+        .pin-container:hover,
+        .pin-container.active {
+          transform: translate(-50%, -50%) scale(1.8); /* Increased scale */
+          animation: bounce 0.5s ease infinite alternate;
+        }
       }
     </style>
   </head>
@@ -270,7 +294,7 @@
           name: "MUMBAI (HQ)",
           id: "mumbai",
           top: "66%",
-          left: "18%",
+          left: "18.90%",
           color: "gold",
           isHeadquarters: true,
         },
@@ -295,7 +319,7 @@
           left: "20%",
           color: "purple",
         },
-        { name: "PUNE", id: "pune", top: "60%", left: "24%", color: "orange" },
+        { name: "PUNE", id: "pune", top: "58%", left: "24%", color: "orange" },
         {
           name: "HYDERABAD",
           id: "hyderabad",
